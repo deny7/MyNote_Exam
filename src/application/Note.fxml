@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="border" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NoteController">
+   <bottom>
+      <HBox fx:id="status_bar" prefHeight="15.0" prefWidth="365.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="label" alignment="TOP_LEFT" prefHeight="19.0" prefWidth="326.0" text="  현재 시간" wrapText="true" />
+            <Label prefHeight="19.0" prefWidth="69.0" text="글자수:" />
+            <Label fx:id="current_text_length" prefHeight="19.0" prefWidth="74.0" />
+            <Label fx:id="language" prefHeight="19.0" prefWidth="108.0" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <TextArea fx:id="textArea" prefHeight="407.0" prefWidth="888.0" promptText="메모를 입력해 주세요" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <VBox prefHeight="80.0" prefWidth="565.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar prefHeight="25.0" prefWidth="365.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="파일">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#open" text="열기">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" onAction="#save" text="저장">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" onAction="#close" text="닫기">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="ESCAPE" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="편집">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="찾기" />
+                    </items>
+                  </Menu>
+                <Menu mnemonicParsing="false" text="서식">
+                     <items>
+                        <CheckMenuItem fx:id="line_check" mnemonicParsing="false" onAction="#autoline" text="자동 줄 바꿈" />
+                        <MenuItem fx:id="font" mnemonicParsing="false" onAction="#font_click" text="글꼴">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                     </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="보기">
+                  <items>
+                        <CheckMenuItem fx:id="status_show" mnemonicParsing="false" onAction="#status" text="상태표시줄" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="도움말">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#about" text="메모장 정보" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <HBox prefHeight="122.0" prefWidth="565.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="78.0" text="  글자 색상">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Label>
+                  <ColorPicker fx:id="font_color_select" onAction="#color_selected">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ColorPicker>
+                  <Label prefHeight="24.0" prefWidth="78.0" text=" 배경 색상">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin></Label>
+                  <ColorPicker fx:id="background_color_select" onAction="#color_selected" />
+                  <Label prefHeight="28.0" prefWidth="54.0" text="툴 배경">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ColorPicker fx:id="tool_color_select" onAction="#tool_color_selected" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
